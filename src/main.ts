@@ -21,9 +21,9 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const DB = getDatabase(firebaseApp);
 
-void set(ref(DB, 'users/2'), {
-  name: 'name',
-  surname: 'surname',
+void set(ref(DB, 'users/4'), {
+  name: 'piton',
+  surname: 'boevoy',
 });
 
 const vuetify = createVuetify();
