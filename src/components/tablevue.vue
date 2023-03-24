@@ -33,9 +33,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import getUsers from "@/components/database";
-import { initializeApp } from "firebase/app";
-  const selected = ref([]);
+const selected = ref([]);
 /*   const headers = ref([
           {
             title: 'Dessert (100g serving)',
@@ -131,7 +129,8 @@ import { initializeApp } from "firebase/app";
             iron: 6,
           },
         ]);
-  console.log(getUsers)
+ans.then(ans=>console.log(ans)
+)
 </script>
 
 
