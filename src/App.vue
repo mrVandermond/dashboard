@@ -5,8 +5,8 @@ import SideMenu from './views/components/SideMenu.vue';
 
 <template>
   <div>
-    <SideMenu></SideMenu>
     <RouterView />
+    <SideMenu />
   </div>
 </template>
 

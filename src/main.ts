@@ -5,7 +5,7 @@ import { createVuetify } from 'vuetify';
 import { aliases, mdi } from 'vuetify/iconsets/mdi';
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set } from 'firebase/database';
-
+import '@mdi/font/css/materialdesignicons.css';
 import App from './App.vue';
 import router from './router';
 
