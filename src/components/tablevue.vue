@@ -1,20 +1,42 @@
 <template>
-  {{ dataTable }}
-  <v-data-table
-    v-model="selected"
-    :headers="headers"
-    :items="desserts"
-    item-value="name"
-    show-select
-    class="elevation-1"
+  <v-table
+    fixed-header
   >
-
-  </v-data-table>
+    <thead>
+      <tr>
+        <th class="text-left">
+          Name
+        </th>
+        <th class="text-left">
+          Calories
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        v-for="item in desserts"
+        :key="item.name"
+      >
+        <td>{{ item.name }}</td>
+        <td>{{ item.calories }}</td>
+      </tr>
+    </tbody>
+    <tfoot class="tableFooter">
+      <tr>
+        <v-pagination :length="5"></v-pagination>
+      </tr>
+    </tfoot>
+  </v-table>
 </template>
+
+
+
 <script setup lang="ts">
 import { ref } from 'vue'
+import getUsers from "@/components/database";
+import { initializeApp } from "firebase/app";
   const selected = ref([]);
-  const headers = ref([
+/*   const headers = ref([
           {
             title: 'Dessert (100g serving)',
             align: 'start',
@@ -26,7 +48,7 @@ import { ref } from 'vue'
           { title: 'Carbs (g)', key: 'carbs' },
           { title: 'Protein (g)', key: 'protein' },
           { title: 'Iron (%)', key: 'iron' },
-        ])
+        ]) */
   const desserts = ref([
           {
             name: 'Frozen Yogurt',
@@ -109,7 +131,13 @@ import { ref } from 'vue'
             iron: 6,
           },
         ]);
+  console.log(getUsers)
 </script>
-<style >
-    
+
+
+
+<style scoped>
+    .tableFooter{
+      background-color: rgb(238, 69, 69);
+    }
 </style>
