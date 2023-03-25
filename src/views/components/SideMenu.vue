@@ -23,7 +23,6 @@
             :key="item.id"
             link
           >
-            <v-icon icon="item.icon"></v-icon>
           </v-list-item>
 
           <v-list-item type="subheader" title="DATA MANAGEMENT"></v-list-item>
@@ -34,7 +33,6 @@
             :key="item.id"
             link
           >
-            <v-icon icon="item.icon"></v-icon>
           </v-list-item>
         </v-list>
 
@@ -47,7 +45,6 @@
             :key="item.id"
             link
           >
-            <v-icon icon="item.icon"></v-icon>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
