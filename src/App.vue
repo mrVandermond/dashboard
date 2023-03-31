@@ -5,8 +5,8 @@ import SideMenu from './views/components/SideMenu.vue';
 
 <template>
   <div>
-    <RouterView />
     <SideMenu />
+    <RouterView />
   </div>
 </template>
 
@@ -15,3 +15,12 @@ div {
   display: flex;
 }
 </style>
+
+<!-- <keep-alive>
+  <SideMenu />
+</keep-alive>
+<RouterView v-slot="{ Component }">
+  <keep-alive>
+    <component :is="Component" />
+  </keep-alive>
+</RouterView> -->
