@@ -10,15 +10,20 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/overview',
-      name: 'overview',
-      component: () => import('@/views/OverView.vue'),
+      path: '/login',
+      name: 'login',
+      component: {},
     },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: () => import('@/views/Dashboard.vue'),
-    },
+    // {
+    //   path: '/overview',
+    //   name: 'overview',
+    //   component: () => import('@/views/OverView.vue'),
+    // },
+    // {
+    //   path: '/dashboard',
+    //   name: 'dashboard',
+    //   component: () => import('@/views/Dashboard.vue'),
+    // },
   ],
 });
 
