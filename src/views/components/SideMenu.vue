@@ -16,10 +16,9 @@
             subtitle="brianford@lok.com"
             nav
             class="ma-2"
-          >
-          </v-list-item>
+          />
           <v-list density="compact" class="ma-2" nav>
-            <v-list-item type="subheader" title="ANALYSIS"></v-list-item>
+            <v-list-item type="subheader" title="ANALYSIS" />
             <v-list-item
               v-for="item in ANALYSIS"
               :prepend-icon="item.icon"
@@ -28,11 +27,10 @@
               link
               :to="item.path"
               :nav="true"
-            >
-            </v-list-item>
+            />
           </v-list>
           <v-list density="compact" class="ma-2" nav>
-            <v-list-item type="subheader" title="DATA MANAGEMENT"></v-list-item>
+            <v-list-item type="subheader" title="DATA MANAGEMENT" />
             <v-list-item
               v-for="item in DATA_MANAGEMENT"
               :prepend-icon="item.icon"
@@ -41,16 +39,12 @@
               link
               :to="item.path"
               :nav="true"
-            >
-            </v-list-item>
+            />
           </v-list>
           <template v-slot:append>
             <div class="ma-2">
               <v-list density="compact" nav>
-                <v-list-item
-                  type="subheader"
-                  title="ADMINISTRATION"
-                ></v-list-item>
+                <v-list-item type="subheader" title="ADMINISTRATION" />
                 <v-list-item
                   v-for="item in ADMINISTRATION"
                   :prepend-icon="item.icon"
@@ -59,8 +53,7 @@
                   link
                   :to="item.path"
                   :nav="true"
-                >
-                </v-list-item>
+                />
               </v-list>
             </div>
           </template>
