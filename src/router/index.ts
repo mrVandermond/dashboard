@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import type { RouteRecordRaw } from 'vue-router';
-import { RoutePaths } from '@/enums/PageNameRouter.ts';
+import { RoutePaths } from '@/enums/PageNameRouter';
 
 const HomeView = () => import('../views/HomeView.vue');
 const LoginView = () => import('../views/LoginView.vue');
