@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import type { RouteRecordRaw } from 'vue-router';
 import { RoutePaths } from '@/enums/PageNameRouter.ts';
 
 const HomeView = () => import('../views/HomeView.vue');
@@ -17,80 +18,67 @@ const SupportView = () => import('../views/SupportView.vue');
 const AccountView = () => import('../views/AccountView.vue');
 const SignOutView = () => import('../views/SignOutView.vue');
 
-const routes = [
+const routes: Array<RouteRecordRaw> = [
   {
-    path: RoutePaths.HOME,
-    name: 'home',
+    path: `/${RoutePaths.HOME}`,
     component: HomeView,
+    children: [
+      {
+        path: RoutePaths.OVERVIEW,
+        component: OverviewView,
+      },
+      {
+        path: RoutePaths.DASHBOARD,
+        component: DashboardView,
+      },
+      {
+        path: RoutePaths.ANALYZE,
+        component: AnalyzeView,
+      },
+      {
+        path: RoutePaths.EVENTS,
+        component: EventsView,
+      },
+      {
+        path: RoutePaths.CHARTS,
+        component: ChartsView,
+      },
+      {
+        path: RoutePaths.PAYMENT,
+        component: PaymentView,
+      },
+      {
+        path: RoutePaths.VISUAL_LABELING,
+        component: VisualLabelingView,
+      },
+      {
+        path: RoutePaths.LIVE_DATA_FEED,
+        component: LiveDataFeedView,
+      },
+      {
+        path: RoutePaths.UPDATES,
+        component: UpdatesView,
+      },
+      {
+        path: RoutePaths.INTEGRATIONS,
+        component: IntegrationsView,
+      },
+      {
+        path: RoutePaths.SUPPORT,
+        component: SupportView,
+      },
+      {
+        path: RoutePaths.ACCOUNT,
+        component: AccountView,
+      },
+    ],
   },
   {
-    path: RoutePaths.LOGIN,
-    name: 'login',
+    path: `/${RoutePaths.LOGIN}`,
     component: LoginView,
   },
   {
-    path: RoutePaths.OVERVIEW,
-    name: 'overview',
-    component: OverviewView,
-  },
-  {
-    path: RoutePaths.DASHBOARD,
-    name: 'dashboard',
-    component: DashboardView,
-  },
-  {
-    path: RoutePaths.ANALYZE,
-    name: 'analyze',
-    component: AnalyzeView,
-  },
-  {
-    path: RoutePaths.EVENTS,
-    name: 'events',
-    component: EventsView,
-  },
-  {
-    path: RoutePaths.CHARTS,
-    name: 'charts',
-    component: ChartsView,
-  },
-  {
-    path: RoutePaths.PAYMENT,
-    name: 'payment',
-    component: PaymentView,
-  },
-  {
-    path: RoutePaths.VISUAL_LABELING,
-    name: 'visual-labeling',
-    component: VisualLabelingView,
-  },
-  {
-    path: RoutePaths.LIVE_DATA_FEED,
-    name: 'live-data-feed',
-    component: LiveDataFeedView,
-  },
-  {
-    path: RoutePaths.UPDATES,
-    name: 'updates',
-    component: UpdatesView,
-  },
-  {
-    path: RoutePaths.INTEGRATIONS,
-    name: 'integrations',
-    component: IntegrationsView,
-  },
-  {
-    path: RoutePaths.SUPPORT,
-    name: 'support',
-    component: SupportView,
-  },
-  {
-    path: RoutePaths.ACCOUNT,
-    name: 'account',
-    component: AccountView,
-  },
-  {
-    path: RoutePaths.SIGN_OUT,
-    name: 'sign-out',
+    path: `/${RoutePaths.SIGN_OUT}`,
     component: SignOutView,
   },
 ];
