@@ -22,11 +22,6 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const DB = getDatabase(firebaseApp);
 
-// void set(ref(DB, 'users/2'), {
-//   name: 'name',
-//   surname: 'surname',
-// });
-
 const vuetify = createVuetify({
   icons: {
     defaultSet: 'mdi',

@@ -4,9 +4,7 @@
       <keep-alive>
         <v-navigation-drawer
           v-model="drawer"
-          :rail="rail"
           permanent
-          @click="rail = false"
           class="d-flex align-start flex-column"
           include="SideMenu"
         >
@@ -16,10 +14,9 @@
             subtitle="brianford@lok.com"
             nav
             class="ma-2"
-          >
-          </v-list-item>
+          />
           <v-list density="compact" class="ma-2" nav>
-            <v-list-item type="subheader" title="ANALYSIS"></v-list-item>
+            <v-list-item type="subheader" title="ANALYSIS" />
             <v-list-item
               v-for="item in ANALYSIS"
               :prepend-icon="item.icon"
@@ -28,11 +25,10 @@
               link
               :to="item.path"
               :nav="true"
-            >
-            </v-list-item>
+            />
           </v-list>
           <v-list density="compact" class="ma-2" nav>
-            <v-list-item type="subheader" title="DATA MANAGEMENT"></v-list-item>
+            <v-list-item type="subheader" title="DATA MANAGEMENT" />
             <v-list-item
               v-for="item in DATA_MANAGEMENT"
               :prepend-icon="item.icon"
@@ -41,16 +37,12 @@
               link
               :to="item.path"
               :nav="true"
-            >
-            </v-list-item>
+            />
           </v-list>
           <template v-slot:append>
             <div class="ma-2">
               <v-list density="compact" nav>
-                <v-list-item
-                  type="subheader"
-                  title="ADMINISTRATION"
-                ></v-list-item>
+                <v-list-item type="subheader" title="ADMINISTRATION" />
                 <v-list-item
                   v-for="item in ADMINISTRATION"
                   :prepend-icon="item.icon"
@@ -59,8 +51,7 @@
                   link
                   :to="item.path"
                   :nav="true"
-                >
-                </v-list-item>
+                />
               </v-list>
             </div>
           </template>
@@ -76,7 +67,6 @@ import { ref } from 'vue';
 
 const drawer = ref(true);
 const ANALYSIS = ref([
-  // { title: 'ANALYSIS', id: 0, icon: '' },
   { title: 'Overview', icon: 'mdi-home-city', id: 1, path: '/overview' },
   { title: 'Dashboard', icon: 'mdi-view-dashboard', id: 2, path: '/dashboard' },
   {
@@ -88,7 +78,6 @@ const ANALYSIS = ref([
   { title: 'Analyze', icon: 'mdi-poll', id: 4, path: '/analyze' },
 ]);
 const DATA_MANAGEMENT = ref([
-  // { title: 'ANALYSIS', id: 0, icon: '' },
   { title: 'Explore Events', icon: 'mdi-earth', id: 1, path: '/events' },
   {
     title: 'Payment Inforamtion',
@@ -110,7 +99,6 @@ const DATA_MANAGEMENT = ref([
   },
 ]);
 const ADMINISTRATION = ref([
-  // { title: 'ANALYSIS', id: 0, icon: '' },
   {
     title: 'Updates',
     icon: 'mdi-flag-variant-outline',
@@ -127,12 +115,6 @@ const ADMINISTRATION = ref([
   { title: 'Account', icon: 'mdi-account-outline', id: 4, path: '/account' },
   { title: 'Sign out', icon: 'mdi-exit-to-app', id: 5, path: '/signout' },
 ]);
-
-const rail = ref(false);
 </script>
 
-<style scoped>
-v-navigation-drawer > v-list:last-of-type() {
-  margin-top: auto;
-}
-</style>
+<style scoped></style>
