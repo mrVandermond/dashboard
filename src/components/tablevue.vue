@@ -11,7 +11,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="item in users" >
+      <tr  v-for="item in users">
+        <td><v-checkbox /> </td>
         <td>{{ item.Name }}</td>
         <td>{{ item.Surname }}</td>
         <td>{{ item.country }}</td>
@@ -27,7 +28,7 @@
     </tbody>
     <tfoot class="tableFooter">
       <tr>
-        <v-pagination :length="5"></v-pagination>
+        <v-pagination :length="8" v-on:next="nextPage()" v-on:prev="prevPage()"></v-pagination>
       </tr>
     </tfoot>
   </v-table>
@@ -38,7 +39,7 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import  { getAllUsers, getPage } from '@/firebase/requsetusers'
+import { getAllUsers, getPage } from '@/firebase/requsetusers'
 import { onValue } from '@firebase/database';
 const headers = ref([])
 const users = ref([]);
@@ -48,16 +49,30 @@ const users = ref([]);
     headers[i] = el.Name
   })
 }) */
-onValue(getPage(0,7), (snapshot)=>{
+onValue(getPage(0, 7), (snapshot) => {
   let data = snapshot.val()
-  Object.values(data).forEach((element,i) => {
+  Object.values(data).forEach((element, i) => {
     users.value.push(element)
   });;
   console.log(Object.values(data))
-} )
+})
+let now: number = 0;
+let shift: number = 7;
+function nextPage() {
+  now += shift;
+  onValue(getPage(now, shift), (snapshot) => {
+    let data = snapshot.val()
+    users.value = Object.values(data);
+  })
+}
 
-console.log(users)
-
+function prevPage() {
+  now -= shift;
+  onValue(getPage(now, shift), (snapshot) => {
+    let data = snapshot.val()
+    users.value = Object.values(data);
+  })
+}
 
 </script>
 
