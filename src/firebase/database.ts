@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { get, getDatabase, limitToFirst, ref, set, query, orderByKey, child, update} from "firebase/database";
+import { getDatabase,ref} from "firebase/database";
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -12,19 +12,6 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const DB = getDatabase(firebaseApp);
-const dbRef = ref(DB);
+export default DB;
 
 
-const getUsers =  get(child(dbRef, `/`))
-export default getUsers
-.then((data) => {
-  if (data.exists()) {
-    console.log(data.val())
-    data.val();
-  } else {
-    console.log("No data available");
-  }
-})
-.catch((error) => {
-  console.error(error);
-});
