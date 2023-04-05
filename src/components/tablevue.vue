@@ -1,18 +1,16 @@
 <template>
-  <v-table fixed-header>
+  <v-table fixed-header density="compact">
     <thead>
-      <tr v-for="item in headers" :key="item">
-        <th class="text-left">
-          Name
-        </th>
-        <th class="text-left">
-          Calories
+      <tr>
+        <th><v-icon/></th>
+        <th class="text-left" v-for="item in headers" :key="item">
+          {{item}}
         </th>
       </tr>
     </thead>
     <tbody>
-      <tr  v-for="item in users">
-        <td><v-checkbox /> </td>
+      <tr v-for="item in users">
+        <td><v-checkbox></v-checkbox></td>
         <td>{{ item.Name }}</td>
         <td>{{ item.Surname }}</td>
         <td>{{ item.country }}</td>
@@ -28,7 +26,7 @@
     </tbody>
     <tfoot class="tableFooter">
       <tr>
-        <v-pagination :length="8" v-on:next="nextPage()" v-on:prev="prevPage()"></v-pagination>
+        <v-pagination v-model="page" :length="8" v-on:next="nextPage()" v-on:prev="prevPage()" v-on:update:model-value="callPage()"></v-pagination>
       </tr>
     </tfoot>
   </v-table>
@@ -41,8 +39,9 @@
 import { ref } from 'vue'
 import { getAllUsers, getPage } from '@/firebase/requsetusers'
 import { onValue } from '@firebase/database';
-const headers = ref([])
+const headers = ref(['Name',`Surname`,`country`,`duties`,`email`,`id`,`post`,`role`,`skills`,`status`,`timestamp`])
 const users = ref([]);
+let page:number;
 /* getAllUsers.then(val => {
   val.users.forEach((el, i) => {
     users[i] = el
@@ -51,7 +50,7 @@ const users = ref([]);
 }) */
 onValue(getPage(0, 7), (snapshot) => {
   let data = snapshot.val()
-  Object.values(data).forEach((element, i) => {
+  Object.values(data).forEach((element:object, i:number) => {
     users.value.push(element)
   });;
   console.log(Object.values(data))
@@ -73,6 +72,14 @@ function prevPage() {
     users.value = Object.values(data);
   })
 }
+function callPage() {
+  now = page*shift-shift;
+  onValue(getPage(now, shift), (snapshot) => {
+    let data = snapshot.val()
+    users.value = Object.values(data);
+  })
+}
+
 
 </script>
 
