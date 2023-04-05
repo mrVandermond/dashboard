@@ -58,19 +58,21 @@ onValue(getPage(0, 7), (snapshot) => {
 let now: number = 0;
 let shift: number = 7;
 function nextPage() {
-  now += shift;
+  console.log(now,shift);
   onValue(getPage(now, shift), (snapshot) => {
     let data = snapshot.val()
     users.value = Object.values(data);
   })
+  now += shift;
 }
 
 function prevPage() {
-  now -= shift;
+
   onValue(getPage(now, shift), (snapshot) => {
     let data = snapshot.val()
     users.value = Object.values(data);
   })
+  now -= shift;
 }
 function callPage() {
   now = page*shift-shift;
