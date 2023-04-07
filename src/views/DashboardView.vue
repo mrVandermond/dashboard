@@ -1,14 +1,9 @@
-<script setup lang="ts">
-  import  TableVue  from "@/components/tablevue.vue"
-</script>
-
 <template>
   <main>
     <SideMenu />
     <RouterView />
   </main>
-  <TableVue/>
-  <h1>Home</h1>
+  <h1>Dashboard</h1>
 </template>
 
 <script setup lang="ts">

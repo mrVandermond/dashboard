@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from "vue-router";
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <VBtn color="primary">Hello</VBtn>
   <div>
-    <v-icon icon="mdi-vuetify" />
+    <RouterView />
   </div>
-  <RouterView />
 </template>
+
+<style scoped>
+div {
+  display: flex;
+}
+</style>
