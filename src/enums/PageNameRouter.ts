@@ -1,0 +1,17 @@
+export enum RoutePaths {
+  HOME = '',
+  LOGIN = 'login',
+  OVERVIEW = 'overview',
+  DASHBOARD = 'dashboard',
+  ANALYZE = 'analyze',
+  EVENTS = 'events',
+  CHARTS = 'charts',
+  PAYMENT = 'payment',
+  VISUAL_LABELING = 'visuallabeling',
+  LIVE_DATA_FEED = 'livedatafeed',
+  UPDATES = 'updates',
+  INTEGRATIONS = 'integrations',
+  SUPPORT = 'support',
+  ACCOUNT = 'account',
+  SIGN_OUT = 'signout',
+}
