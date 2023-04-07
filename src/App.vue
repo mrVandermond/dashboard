@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from "vue-router";
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <VBtn color="primary">Hello</VBtn>
-
-  <RouterView />
+  <div>
+    <RouterView />
+  </div>
 </template>
+
+<style scoped>
+div {
+  display: flex;
+}
+</style>

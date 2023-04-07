@@ -1,12 +1,13 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
-import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set } from "firebase/database";
-
-import App from "./App.vue";
-import router from "./router";
+import { aliases, mdi } from 'vuetify/iconsets/mdi';
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, set } from 'firebase/database';
+import '@mdi/font/css/materialdesignicons.css';
+import App from './App.vue';
+import router from './router';
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -21,16 +22,19 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const DB = getDatabase(firebaseApp);
 
-void set(ref(DB, 'users/2'), {
-  name: 'name',
-  surname: 'surname',
+const vuetify = createVuetify({
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
+    },
+  },
 });
-
-const vuetify = createVuetify();
 const app = createApp(App);
 
 app.use(createPinia());
 app.use(router);
 app.use(vuetify);
 
-app.mount("#app");
+app.mount('#app');

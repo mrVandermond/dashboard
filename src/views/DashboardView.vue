@@ -3,7 +3,7 @@
     <SideMenu />
     <RouterView />
   </main>
-  <h1>Home</h1>
+  <h1>Dashboard</h1>
 </template>
 
 <script setup lang="ts">
