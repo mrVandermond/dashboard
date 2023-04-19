@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import  TableVue  from "@/components/tablevue.vue"
+import SideMenu from '@/views/components/SideMenu.vue';
+import  TableVue  from "@/components/tablevue.vue"
 </script>
 
 <template>
@@ -11,6 +12,3 @@
   <h1>Home</h1>
 </template>
 
-<script setup lang="ts">
-import SideMenu from '@/views/components/SideMenu.vue';
-</script>

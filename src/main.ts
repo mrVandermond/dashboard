@@ -32,15 +32,6 @@ const vuetify = createVuetify({
   },
 });
 const app = createApp(App);
-const vuetify = createVuetify({
-  icons: {
-    defaultSet: 'mdi',
-    aliases,
-    sets: {
-      mdi,
-    }
-  },
-});
 
 app.use(createPinia());
 app.use(router);

@@ -1,35 +1,39 @@
 <template>
-  <v-table fixed-header density="compact">
+  <table>
+    <caption>
+      <div class="name">
+        Team
+      </div>
+    </caption>
     <thead>
       <tr>
-        <th><v-icon/></th>
-        <th class="text-left" v-for="item in headers" :key="item">
-          {{item}}
+        <th style="width:50px"><v-checkbox density="compact" hide-details="" /></th>
+        <th class="text-left" v-for="user in headers" :key="user">
+          {{ user }}
         </th>
       </tr>
     </thead>
+    <tfoot class="tableFooter">
+      <td colspan="12">
+        <v-pagination v-model="page" :length="8" v-on:next="nextPage" v-on:prev="prevPage"
+          v-on:update:model-value="callPage" show-first-last-page density="compact">
+        </v-pagination>
+      </td>
+    </tfoot>
     <tbody>
-      <tr v-for="item in users">
-        <td><v-checkbox></v-checkbox></td>
-        <td>{{ item.Name }}</td>
-        <td>{{ item.Surname }}</td>
-        <td>{{ item.country }}</td>
-        <td>{{ item.duties }}</td>
-        <td>{{ item.email }}</td>
-        <td>{{ item.id }}</td>
-        <td>{{ item.post }}</td>
-        <td>{{ item.role }}</td>
-        <td>{{ item.skills }}</td>
-        <td>{{ item.status }}</td>
-        <td>{{ item.timestamp }}</td>
+      <tr v-for="user in users" style="width:100px ;">
+        <td><v-checkbox density="compact" hide-details=""></v-checkbox></td>
+        <template v-for="property in user">
+          <td v-if="property == user[`skills levels`]">
+            <v-progress-linear color="blue" :model-value="user[`skills levels`]" :height="5"></v-progress-linear>
+          </td>
+          <td v-else>
+            {{ property }}
+          </td>
+        </template>
       </tr>
     </tbody>
-    <tfoot class="tableFooter">
-      <tr>
-        <v-pagination v-model="page" :length="8" v-on:next="nextPage()" v-on:prev="prevPage()" v-on:update:model-value="callPage()"></v-pagination>
-      </tr>
-    </tfoot>
-  </v-table>
+  </table>
 </template>
 
 
@@ -37,59 +41,78 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import { getAllUsers, getPage } from '@/firebase/requsetusers'
+import { getPage } from '@/firebase/requsetusers'
 import { onValue } from '@firebase/database';
-const headers = ref(['Name',`Surname`,`country`,`duties`,`email`,`id`,`post`,`role`,`skills`,`status`,`timestamp`])
+
+
+
+const headers = ref([])
 const users = ref([]);
-let page:number;
-/* getAllUsers.then(val => {
-  val.users.forEach((el, i) => {
-    users[i] = el
-    headers[i] = el.Name
-  })
-}) */
-onValue(getPage(0, 7), (snapshot) => {
-  let data = snapshot.val()
-  Object.values(data).forEach((element:object, i:number) => {
-    users.value.push(element)
-  });;
-  console.log(Object.values(data))
-})
+
+let page: number;
 let now: number = 0;
-let shift: number = 7;
-function nextPage() {
-  console.log(now,shift);
+const shift: number = 7;
+
+
+function getUserValues(now: number, shift: number) {
   onValue(getPage(now, shift), (snapshot) => {
     let data = snapshot.val()
     users.value = Object.values(data);
+    headers.value = Object.keys(data[now]);
   })
+}
+
+//init first page
+getUserValues(0, 7)
+
+function nextPage() {
+  getUserValues(now, shift)
   now += shift;
 }
 
 function prevPage() {
-
-  onValue(getPage(now, shift), (snapshot) => {
-    let data = snapshot.val()
-    users.value = Object.values(data);
-  })
+  getUserValues(now, shift)
   now -= shift;
 }
-function callPage() {
-  now = page*shift-shift;
-  onValue(getPage(now, shift), (snapshot) => {
-    let data = snapshot.val()
-    users.value = Object.values(data);
-  })
-}
 
+function callPage() {
+  now = page * shift - shift;
+  getUserValues(now, shift)
+}
 
 </script>
 
 
 
 <style scoped>
-.tableFooter {
-  background-color: rgb(238, 69, 69);
+table {
+  display: block;
+  border-radius: 20px;
+  border-collapse: collapse;
+  border: 2px solid rgba(0, 0, 0, 0.17)
+}
+
+th {
+  font-weight: normal;
+  color: rgb(13, 13, 14);
+  padding: 2px;
+  text-transform: capitalize;
+  border-top: 2px solid rgba(0, 0, 0, 0.17);
+}
+
+td {
+  color: rgb(0, 0, 0);
+  padding: 5px;
+  border-top: 2px solid rgba(0, 0, 0, 0.17);
+}
+
+tr:hover td {
+  background: #0000000e;
+}
+
+.name {
+  height: 40px;
+  text-transform: capitalize;
 }
 </style>
 
