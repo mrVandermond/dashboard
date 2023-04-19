@@ -7,7 +7,11 @@
     </caption>
     <thead>
       <tr>
-        <th style="width:50px"><v-checkbox density="compact" hide-details="" /></th>
+        <th style="width:50px">
+          <v-checkbox
+          density="compact"
+          hide-details />
+        </th>
         <th class="text-left" v-for="user in headers" :key="user">
           {{ user }}
         </th>
@@ -15,17 +19,32 @@
     </thead>
     <tfoot class="tableFooter">
       <td colspan="12">
-        <v-pagination v-model="page" :length="8" v-on:next="nextPage" v-on:prev="prevPage"
-          v-on:update:model-value="callPage" show-first-last-page density="compact">
+        <v-pagination
+        v-model="page"
+        :length="8"
+        v-on:next="nextPage"
+        v-on:prev="prevPage"
+        v-on:update:model-value="callPage"
+        show-first-last-page
+        density="compact">
         </v-pagination>
       </td>
     </tfoot>
     <tbody>
-      <tr v-for="user in users" style="width:100px ;">
-        <td><v-checkbox density="compact" hide-details=""></v-checkbox></td>
+      <tr v-for="user in users">
+        <td>
+          <v-checkbox
+           density="compact"
+           hide-details>
+          </v-checkbox>
+        </td>
         <template v-for="property in user">
           <td v-if="property == user[`skills levels`]">
-            <v-progress-linear color="blue" :model-value="user[`skills levels`]" :height="5"></v-progress-linear>
+            <v-progress-linear
+            color="blue" 
+            :model-value="user[`skills levels`]" 
+            :height="5">
+            </v-progress-linear>
           </td>
           <td v-else>
             {{ property }}
@@ -50,34 +69,36 @@ const headers = ref([])
 const users = ref([]);
 
 let page: number;
-let now: number = 0;
+let currentIdCounter: number = 0;
 const shift: number = 7;
 
 
-function getUserValues(now: number, shift: number) {
-  onValue(getPage(now, shift), (snapshot) => {
+function getUserValues(currentIdCounter: number, shift: number) {
+  onValue(getPage(currentIdCounter, shift), (snapshot) => {
     let data = snapshot.val()
     users.value = Object.values(data);
-    headers.value = Object.keys(data[now]);
+    headers.value = Object.keys(data[currentIdCounter]);
   })
 }
 
 //init first page
-getUserValues(0, 7)
+getUserValues(currentIdCounter, shift)
+
+
 
 function nextPage() {
-  getUserValues(now, shift)
-  now += shift;
+  getUserValues(currentIdCounter, shift)
+  currentIdCounter += shift;
 }
 
 function prevPage() {
-  getUserValues(now, shift)
-  now -= shift;
+  getUserValues(currentIdCounter, shift)
+  currentIdCounter -= shift;
 }
 
 function callPage() {
-  now = page * shift - shift;
-  getUserValues(now, shift)
+  currentIdCounter = page * shift - shift;
+  getUserValues(currentIdCounter, shift)
 }
 
 </script>

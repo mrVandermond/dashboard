@@ -23,13 +23,4 @@ const getAllUsers = get(child(dbRef, `/`))
   });
 
 
-
-
-/* getAllUsers.then(val => {
-  val.users.forEach((el, i) => {
-    users[i] = el
-    headers[i] = el.Name
-  })
-}) */
-
 export  { getAllUsers, getPage };
