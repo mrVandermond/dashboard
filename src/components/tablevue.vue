@@ -10,7 +10,8 @@
         <th style="width:50px">
           <v-checkbox
           density="compact"
-          hide-details />
+          hide-details
+          />
         </th>
         <th class="text-left" v-for="user in headers" :key="user">
           {{ user }}
@@ -26,8 +27,8 @@
         v-on:prev="prevPage"
         v-on:update:model-value="callPage"
         show-first-last-page
-        density="compact">
-        </v-pagination>
+        density="compact"
+        />
       </td>
     </tfoot>
     <tbody>
@@ -35,16 +36,16 @@
         <td>
           <v-checkbox
            density="compact"
-           hide-details>
-          </v-checkbox>
+           hide-details
+          />
         </td>
         <template v-for="property in user">
           <td v-if="property == user[`skills levels`]">
             <v-progress-linear
-            color="blue" 
-            :model-value="user[`skills levels`]" 
-            :height="5">
-            </v-progress-linear>
+            color="blue"
+            :model-value="user[`skills levels`]"
+            :height="5"
+            />
           </td>
           <td v-else>
             {{ property }}
@@ -60,7 +61,7 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
-import { getPage } from '@/firebase/requsetusers'
+import { getPage } from '@/firebase/requsetUsers.js'
 import { onValue } from '@firebase/database';
 
 
