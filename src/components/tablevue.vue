@@ -66,7 +66,7 @@ import { onValue } from '@firebase/database';
 
 
 
-const headers = ref([])
+const headers = ref<Array<string>>([])
 const users = ref([]);
 
 let page: number;
