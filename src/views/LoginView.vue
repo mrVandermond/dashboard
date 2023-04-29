@@ -17,7 +17,6 @@
               label="Password"
               type="password"
               :rules="[passwordRules]"
-              required
             />
 
             <v-row>
@@ -37,43 +36,61 @@
     </v-col>
   </v-row>
 </template>
-<script>
+<script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
-export default {
-  setup() {
-    const email = ref('');
-    const password = ref('');
-
-    const emailRules = [
-      (v) => !!v || 'E-mail is required',
-      (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
-    ];
-
-    const passwordRules = [
-      (v) => !!v || 'Password is required',
-      (v) => v.length >= 8 || 'Password must be at least 8 characters',
-    ];
-
-    function login() {
-      // Добавьте ваш код для обработки логина пользователя
-      // e.g. отправка формы с учетными данными на сервер
-    }
-
-    function forgotPassword() {
-      //Добавьте ваш код для обработки забытого пароля
-      //e.g. перенаправление на страницу сброса пароля
-    }
-
-    return {
-      email,
-      password,
-      emailRules,
-      passwordRules,
-      login,
-      forgotPassword,
-    };
-  },
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database';
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
 };
+
+const firebaseApp = initializeApp(firebaseConfig);
+const DB = getDatabase(firebaseApp);
+
+const router = useRouter();
+
+const email = ref('');
+const password = ref('');
+
+const emailRules = [
+  (v) => !!v || 'E-mail is required',
+  (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+];
+
+const passwordRules = [
+  (v) => !!v || 'Password is required',
+  (v) => v.length >= 8 || 'Password must be at least 8 characters',
+];
+
+function login() {
+  // const emailRef = firebase
+  //   .database()
+  //   .ref('users')
+  //   .orderByChild('email')
+  //   .equalTo(email.value);
+  // emailRef.once('value', (snapshot) => {
+  //   if (snapshot.exists()) {
+  //     // email найден в базе данных
+  //     // перенаправляем пользователя на главную страницу
+  //     router.push('/');
+  //   } else {
+  //     // email не найден в базе данных
+  //     // выдаем ошибку
+  //     alert('Email not found');
+  //   }
+  // });
+}
+function forgotPassword() {
+  //Добавьте ваш код для обработки забытого пароля
+  //e.g. перенаправление на страницу сброса пароля
+}
 </script>
 <style lang="scss" scoped></style>
