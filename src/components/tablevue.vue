@@ -18,7 +18,7 @@
         </th>
       </tr>
     </thead>
-    <tfoot class="tableFooter">
+    <tfoot class="tableFooter" >
       <td colspan="12">
         <v-pagination
         v-model="page"
@@ -39,7 +39,7 @@
            hide-details
           />
         </td>
-        <template v-for="property in user">
+        <template v-for="property in user" >  <!-- при добавлении :key="property" разваливает таблу  -->
           <td v-if="property == user[`skills levels`]">
             <v-progress-linear
             color="blue"
@@ -60,7 +60,7 @@
 
 <script setup lang="ts">
 
-import { ref } from 'vue'
+import { ref , onBeforeMount } from 'vue'
 import { getPage } from '@/firebase/requsetUsers.js'
 import { onValue } from '@firebase/database';
 
