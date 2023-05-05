@@ -3,40 +3,38 @@
     <v-col class="flex-grow-1" cols="12" sm="6" md="4">
       <v-card>
         <v-card-text>
-          <v-form>
-            <v-text-field
-              v-model="email"
-              label="Email"
-              type="email"
-              :rules="[emailRules]"
-              required
-            />
+          <v-text-field
+            v-model="email"
+            label="Email"
+            type="email"
+            :rules="[emailRules]"
+            required
+          />
 
-            <!-- <v-text-field
+          <!-- <v-text-field
               v-model="password"
               label="Password"
               type="password"
               :rules="[passwordRules]"
             /> -->
 
-            <v-row>
-              <v-col cols="12" class="text-center">
-                <v-btn color="primary" @click.prevent="login"> Login </v-btn>
-              </v-col>
-            </v-row>
+          <v-row>
+            <v-col cols="12" class="text-center">
+              <v-btn color="primary" @click.prevent="login"> Login </v-btn>
+            </v-col>
+          </v-row>
 
-            <!-- <v-row>
+          <!-- <v-row>
               <v-col cols="12" class="text-center">
                 <v-btn text @click="forgotPassword"> Forgot password? </v-btn>
               </v-col>
             </v-row> -->
-          </v-form>
         </v-card-text>
       </v-card>
     </v-col>
   </v-row>
 </template>
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { checkEmailExists } from '@/firebase/checkUserIsExists.ts';
