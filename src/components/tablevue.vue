@@ -60,8 +60,8 @@
 
 <script setup lang="ts">
 
-import { ref , onBeforeMount } from 'vue'
-import { getPage } from '@/firebase/requsetUsers.js'
+import { ref } from 'vue'
+import { getPage } from '@/firebase/requestUsers.js'
 import { onValue } from '@firebase/database';
 
 

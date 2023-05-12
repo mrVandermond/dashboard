@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main style="display: none;">
     <SideMenu />
     <RouterView />
   </main>

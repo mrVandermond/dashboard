@@ -1,11 +1,11 @@
 <template>
     <v-card
+    :prepend-icon="icon"
     class="mx-auto"
     color="white"
     theme="dark"
     max-width="400"
-    :prepend-icon="course.icon"
-    :title="course.name">
+    :title="name">
         <template
         v-slot:prepend>
             <v-icon
@@ -15,29 +15,28 @@
 
         <v-card-text
         class="text-h5 py-2">
-            "{{ course.description }}" <br>
+            "{{ description }}" <br>
             <v-container>
                 <v-row>
                     <v-col>
                         <v-card
                         color="white"
                         theme="dark">
-                            {{ course.deadline }}
+                            {{ deadline }}
                         </v-card>
                     </v-col>
                     <v-col>
                         <v-card
                         color="white"
                         theme="dark">
-                            {{ course.budget }}
+                            {{ budget }}
                         </v-card>
                     </v-col>
                 </v-row>
             </v-container>
-
             <v-progress-linear
             style="margin-top: 20px;"
-            :model-value="course.progress"
+            :model-value="progress"
             :height="7"
             rounded rounded-bar
             color="blue"
@@ -51,15 +50,15 @@
                 <template
                 v-slot:prepend>
                     <v-avatar
-                    color="grey-darken-3"
-                    :image="user.avatarLink">
+                    color="indigo-accent-1"
+                    :image="avatarLink">
                     </v-avatar>
-                    <v-avatar color="grey-darken-3"
-                    :image="user.avatarLink">
+                    <v-avatar color="indigo-accent-1"
+                    :image="avatarLink">
                     </v-avatar>
                     <v-avatar
-                    color="grey-darken-3"
-                    :image="user.avatarLink">
+                    color="indigo-accent-1"
+                    :image="avatarLink">
                     </v-avatar>
                 </template>
             </v-list-item>
@@ -68,19 +67,17 @@
 </template>
 
 <script setup lang='ts'>
-const course = {
-    name: 'Какой то курс',
-    avatar: 'link',
-    description: 'описание курса с описанием курса и в котором описан курс',
-    icon: 'iconlink',
-    progress: 80,
-    deadline: '19 августа хзкакого года',
-    budget: 'сколько то баксов 1111'
-}
-const user = {
-    avatarLink: 'link',
-}
+defineProps({
+        name: String ,
+        description: String ,
+        icon: String,
+        progress: Number,
+        deadline: String,
+        budget: String,
+        avatarLink : String,
+})
 </script>
 
 <style lang="scss">
+
 </style>
