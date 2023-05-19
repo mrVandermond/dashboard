@@ -12,7 +12,7 @@
     </template>
 
     <v-card-text class="text-h5 py-2">
-      "{{ description }}" <br />
+      "{{ description }}"
       <div class="describeContainer">
         <div class="describeContainer__item">
           <div class="content">
@@ -50,7 +50,9 @@
 </template>
 
 <script setup lang="ts">
-defineProps({
+import type { Course } from '../plugins/types/Course'
+defineProps<Course>()
+/* defineProps({
   name: String,
   description: String,
   icon: String,
@@ -58,7 +60,7 @@ defineProps({
   deadline: String,
   budget: String,
   avatarLink: String,
-});
+}); */
 </script>
 
 <style lang="scss">
