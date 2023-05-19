@@ -1,14 +1,20 @@
 <script setup lang="ts">
-import SideMenu from '@/views/components/SideMenu.vue';
-import  TableVue  from "@/components/tablevue.vue"
+import SideMenu from "@/views/components/SideMenu.vue";
 </script>
 
 <template>
   <main>
     <SideMenu />
-    <RouterView />
   </main>
-  <TableVue/>
-  <h1>Home</h1>
+
+  <div class="mainview">
+    <RouterView />
+  </div>
 </template>
 
+<style scoped>
+.mainview {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
