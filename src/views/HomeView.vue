@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import SideMenu from '@/views/components/SideMenu.vue';
-import TableVue from "@/components/tablevue.vue"
+import SideMenu from "@/views/components/SideMenu.vue";
 </script>
 
 <template>
@@ -8,9 +7,14 @@ import TableVue from "@/components/tablevue.vue"
     <SideMenu />
   </main>
 
-  <div style="display: flex; flex-wrap: wrap;">
+  <div class="mainview">
     <RouterView />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.mainview {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
