@@ -51,16 +51,7 @@
 
 <script setup lang="ts">
 import type { Course } from '../plugins/types/Course'
-defineProps<Course>()
-/* defineProps({
-  name: String,
-  description: String,
-  icon: String,
-  progress: Number,
-  deadline: String,
-  budget: String,
-  avatarLink: String,
-}); */
+ const props = defineProps<Course>()
 </script>
 
 <style lang="scss">

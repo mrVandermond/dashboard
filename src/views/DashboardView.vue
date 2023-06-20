@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import TableVue from "@/components/tablevue.vue";
+import TableVue from "@/views/tablevue.vue";
 </script>
 
 <style scoped>
