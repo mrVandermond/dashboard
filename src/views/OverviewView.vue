@@ -1,11 +1,16 @@
 <template>
   <main>
-    <SideMenu />
-    <RouterView />
+      <h1>Overview</h1>
   </main>
-  <h1>Overview</h1>
 </template>
 
-<script setup lang="ts">
-import SideMenu from '@/views/components/SideMenu.vue';
-</script>
+<script setup lang="ts"></script>
+
+<style scoped>
+main {
+  display: inline-block;
+}
+h1 {
+  text-align: center;
+}
+</style>
