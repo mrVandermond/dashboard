@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
 import type { Course } from '../plugins/types/Course'
-defineProps<Course>()
+ const props = defineProps<Course>()
 /* defineProps({
   name: String,
   description: String,

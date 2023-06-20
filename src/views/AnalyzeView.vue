@@ -11,7 +11,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-import CourseCard from "@/components/CourseCard.vue";
+import CourseCard from "@/views/CourseCard.vue";
 import { getAllCourses } from "@/firebase/requestCourses";
 
 /* const course = {
