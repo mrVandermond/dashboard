@@ -17,6 +17,7 @@ const IntegrationsView = () => import('../views/IntegrationsView.vue');
 const SupportView = () => import('../views/SupportView.vue');
 const AccountView = () => import('../views/AccountView.vue');
 const SignOutView = () => import('../views/SignOutView.vue');
+const AddWorkerView = () => import('../views/AddWorkerView.vue');
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -80,6 +81,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: `/${RoutePaths.SIGN_OUT}`,
     component: SignOutView,
+  },
+  {
+    path: `/${RoutePaths.ADD_WORKER}`,
+    component: AddWorkerView,
   },
 ];
 

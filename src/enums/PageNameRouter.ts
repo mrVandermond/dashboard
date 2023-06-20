@@ -14,4 +14,5 @@ export enum RoutePaths {
   SUPPORT = 'support',
   ACCOUNT = 'account',
   SIGN_OUT = 'signout',
+  ADD_WORKER = 'addworker',
 }
