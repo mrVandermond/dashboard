@@ -4,7 +4,7 @@ export type Course = {
     icon: string,
     progress: number,
     deadline: Date,
-    budget: string,
+    budget: number,
     avatarLink: string,
     id:number
 }
