@@ -40,13 +40,14 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { checkEmailExists } from '@/firebase/checkUserIsExists';
+import { AlertTypes } from '@/enums/AlertTypes';
 
 const router = useRouter();
 
 const email = ref('');
 const password = ref('');
 const isAlert = ref(false);
-const alertType = ref('');
+const alertType = ref();
 const alertText = ref('');
 
 const emailRules = [
@@ -67,13 +68,13 @@ async function login() {
   const result = await checkEmailExists(email.value);
   isAlert.value = true;
   if (result) {
-    alertType.value = 'success';
+    alertType.value = AlertTypes.SUCCESS;
     alertText.value = 'You are log in!';
     setTimeout(async () => {
       await router.push('/');
     }, 1150);
   } else {
-    alertType.value = 'error';
+    alertType.value = AlertTypes.ERROR;
     alertText.value = 'This email not found!';
     console.warn(email.value, 'this email not found');
   }
