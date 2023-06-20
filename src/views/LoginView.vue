@@ -1,13 +1,15 @@
 <template>
   <v-row justify="center" align="center" class="fill-height">
     <v-col class="flex-grow-1" cols="12" sm="6" md="4">
+      <v-alert v-if="isAlert" :type="alertType" :text="alertText"></v-alert>
+
       <v-card>
         <v-card-text>
           <v-text-field
             v-model="email"
             label="Email"
             type="email"
-            :rules="[emailRules]"
+            :rules="emailRules"
             required
           />
 
@@ -37,16 +39,19 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { checkEmailExists } from '@/firebase/checkUserIsExists.ts';
+import { checkEmailExists } from '@/firebase/checkUserIsExists';
 
 const router = useRouter();
 
 const email = ref('');
 const password = ref('');
+const isAlert = ref(false);
+const alertType = ref('');
+const alertText = ref('');
 
 const emailRules = [
-  (v) => !!v || 'E-mail is required',
-  (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+  (value: string) => !!value || 'E-mail is required',
+  (value: string) => /.+@.+\..+/.test(value) || 'E-mail must be valid',
 ];
 
 // const passwordRules = [
@@ -55,13 +60,23 @@ const emailRules = [
 // ];
 
 async function login() {
-  if (!email.value) return;
-  const result = await checkEmailExists(email.value);
-
-  if (result) {
-    return await router.push('/');
+  if (!emailRules.every((rule) => rule(email.value) === true)) {
+    return;
   }
-  console.warn(email.value, 'this email not found');
+
+  const result = await checkEmailExists(email.value);
+  isAlert.value = true;
+  if (result) {
+    alertType.value = 'success';
+    alertText.value = 'You are log in!';
+    setTimeout(async () => {
+      await router.push('/');
+    }, 1150);
+  } else {
+    alertType.value = 'error';
+    alertText.value = 'This email not found!';
+    console.warn(email.value, 'this email not found');
+  }
 }
 // function forgotPassword() {
 //   //Добавьте ваш код для обработки забытого пароля
