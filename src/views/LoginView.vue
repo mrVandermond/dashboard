@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="center" class="fill-height">
+  <v-row class="d-flex fill-height align-content-center">
     <v-col class="flex-grow-1" cols="12" sm="6" md="4">
       <v-alert v-if="isAlert" :type="alertType" :text="alertText"></v-alert>
 
@@ -14,10 +14,10 @@
           />
 
           <!-- <v-text-field
-              v-model="password"
-              label="Password"
-              type="password"
-              :rules="[passwordRules]"
+            v-model="password"
+            label="Password"
+            type="password"
+            :rules="[passwordRules]"
             /> -->
 
           <v-row>
@@ -27,10 +27,10 @@
           </v-row>
 
           <!-- <v-row>
-              <v-col cols="12" class="text-center">
-                <v-btn text @click="forgotPassword"> Forgot password? </v-btn>
-              </v-col>
-            </v-row> -->
+            <v-col cols="12" class="text-center">
+              <v-btn text @click="forgotPassword"> Forgot password? </v-btn>
+            </v-col>
+          </v-row> -->
         </v-card-text>
       </v-card>
     </v-col>
@@ -83,4 +83,8 @@ async function login() {
 //   //e.g. перенаправление на страницу сброса пароля
 // }
 </script>
-<style lang="scss" scoped></style>
+<style scoped>
+.align-content-center {
+  justify-content: center;
+}
+</style>
