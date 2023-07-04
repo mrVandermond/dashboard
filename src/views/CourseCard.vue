@@ -2,13 +2,17 @@
   <v-card
     class="mx-auto"
     color="white"
-    theme="dark"
+    theme="light"
     max-width="400"
     :title="name"
     :prepend-icon="icon"
   >
     <template v-slot:prepend>
       <v-icon size="x-large" :icon="icon"> </v-icon>
+    </template>
+
+    <template v-slot:append>
+      <v-btn icon="mdi-dots-vertical"></v-btn>
     </template>
 
     <v-card-text class="text-h5 py-2">
