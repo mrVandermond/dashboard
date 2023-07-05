@@ -12,7 +12,7 @@
     </template>
 
     <template v-slot:append>
-      <v-btn icon="mdi-dots-vertical"></v-btn>
+      <v-btn @click = "" icon="mdi-dots-vertical"></v-btn>
     </template>
 
     <v-card-text class="text-h5 py-2">
@@ -55,7 +55,10 @@
 
 <script setup lang="ts">
 import type { Course } from '../plugins/types/Course'
- const props = defineProps<Course>()
+const props = defineProps<Course>()
+function menu(){
+
+}
 </script>
 
 <style lang="scss">
