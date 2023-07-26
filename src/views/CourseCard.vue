@@ -5,17 +5,17 @@
     </template>
 
     <template v-slot:append>
-      <v-btn @click="dotsMenu" ref="dushnoeDotsMenu" icon="mdi-dots-vertical">{{ menu }}</v-btn>
-      <div class="iconWrapper" :class="{ 'iconWrapper--noTitle': !menuTitle }">
-        <div class="bar1" :class="{ 'bar1--open': isOpen, 'bar1--dark': isDarkMode }" />
-        <div class="bar2" :class="{ 'bar2--open': isOpen, 'bar2--dark': isDarkMode }" />
-        <div class="bar3" :class="{ 'bar3--open': isOpen, 'bar3--dark': isDarkMode }" />
-      </div>
+      <v-menu>
+        <template v-slot:activator="{ props }">
+          <v-btn icon="mdi-dots-vertical" v-bind="props"></v-btn>
+        </template>
 
-      <section class="dropdownMenu" v-if="isOpen" :class="{ 'dropdownMenu--dark': isDarkMode }">
-        <div class="menuArrow" :class="{ 'menuArrow--dark': isDarkMode }" />
-        <slot />
-      </section>
+        <v-list>
+          <v-list-item v-for="item in menu" :key="item.id" :value="item.id" @click="$emit('modal',$event,id)">
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
 
     </template>
 
@@ -53,33 +53,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import type { Course } from '../plugins/types/Course'
-import { toRefs } from 'vue'
-import type { Ref } from 'vue';
-import type { MyEvent } from '../plugins/types/event';
 
-let isOpen: boolean
-const props = defineProps<Course>()
-const menu = ref(['add', 'delete', 'edit'])
-const dushnoeDotsMenu = ref(null)
-function dotsMenu() {
-  const closeListener = (event: MyEvent<HTMLElement>) => {
-    if (outside(event, dushnoeDotsMenu)) {
-      window.removeEventListener('click', closeListener)
-    }
-  }
+defineProps<Course>()
+const menu = ref([{ title: 'add', id: 1, }, { title: 'delete', id: 2, }, { title: 'edit', id: 3, }])
+const log = (e) => console.log(e)
 
-  window.addEventListener('click', closeListener)
-  isOpen = !isOpen
-
-  const outside = (e: MyEvent<HTMLElement>) => {
-    if (e.target?.closest(`dushnoeDotsMenu`)) {
-      return false
-    }
-    if (isOpen && e.target?.closest(`dushnoeDotsMenu`)) {
-      return true
-    }
-  }
-}
 </script>
  
 <style lang="scss">

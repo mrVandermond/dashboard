@@ -1,10 +1,11 @@
 <template>
+    <teleport to='body'>
     <transition name="modal">
         <div v-if="show" class="modal-shadow" @click.self="closeModal">
             <div class="modal">
                 <div class="modal-close" @click="closeModal">&#10006;</div>
                 <slot name="title">
-                    <h3 class="modal-title">Заголовок</h3>
+                    <h3 class="modal-title"></h3>
                 </slot>
                 <slot name="body">
                     <div class="modal-content">
@@ -21,15 +22,23 @@
             </div>
         </div>
     </transition>
+    </teleport>
 </template>
- 
+
 <script setup lang="ts">
+import { ref } from 'vue';
 
-const name: "ModalWindow"
-let show: false
+const name = "ModalWindow"
 
+const props = defineProps({
+    show: {
+        type: Boolean,
+        default: false,
+    }
+})
+let show = ref(true)
 function closeModal() {
-    show = false
+    show.value = false
 }
 
 </script>
