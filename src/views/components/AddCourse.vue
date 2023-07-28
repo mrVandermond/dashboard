@@ -1,13 +1,19 @@
-<template >
-<div>
-<h1>АДЫН</h1>
-</div>
+<template v-slot:header >
+
+
+</template>
+
+<template v-slot:body>
+
+
+</template>
+
+<template v-slot:footer>
+
 </template>
 
 <script setup lang='ts'>
 
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

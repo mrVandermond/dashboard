@@ -1,8 +1,17 @@
-<template >
-<div>
-<h1>ТРЫ</h1>
-</div>
+<template v-slot:header >
+ 
 </template>
+
+<template v-slot:body>
+        
+
+</template>
+
+<template v-slot:footer>
+        
+
+</template>
+
 
 <script setup lang='ts'>
 

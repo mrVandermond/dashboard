@@ -56,10 +56,9 @@ import type { Course } from '../plugins/types/Course'
 
 defineProps<Course>()
 const menu = ref([{ title: 'add', id: 1, }, { title: 'delete', id: 2, }, { title: 'edit', id: 3, }])
-const log = (e) => console.log(e)
 
 </script>
- 
+
 <style lang="scss">
 .describeContainer {
   display: flex;
