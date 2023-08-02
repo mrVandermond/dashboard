@@ -4,7 +4,7 @@
         </slot>
 
         <slot name="body">
-            <CourseCard :Course="courses[courseId]" />
+            <CourseCard :="courses[courseId]" />
 
         </slot>
 
@@ -21,17 +21,8 @@
 import type { Course } from '@/plugins/types/Course';
 import CourseCard from '../CourseCard.vue';
 import  {inject , ref}  from 'vue'
-
-const courses : Array<Course> = inject('courses', [{
-    name: 'Error',
-    description: 'Error',
-    icon: "mdi-cloud-upload",
-    progress: 80,
-    deadline: 'Error',
-    budget: 'Error',
-    avatarLink: 'https://randomuser.me/api/portraits/men/85.jpg',
-    id: 0
-}])
+// если не получили курсы то рендерим ошибку
+const courses : Array<Course> = inject('courses', [ ])
 const courseId : number = inject('courseId',0)
 
 

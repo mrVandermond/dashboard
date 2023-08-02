@@ -1,6 +1,6 @@
 <template>
     <teleport to='body'>
-        <transition appear name="modal">
+        <transition  name="modal">
             <div v-if="show" class="modal-shadow" @click.self="$emit(`close`)">
                 <div class="modal">
                     <div class="modal-close" @click=" $emit(`close`)">&#10006;</div>
@@ -56,7 +56,7 @@ const component = computed(() => props.component)
     transition: opacity 2s
 }
 
-.modal-enter,
+.modal-enter-from,
 .modal-leave-to {
     opacity: 0
 }
