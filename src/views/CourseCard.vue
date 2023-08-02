@@ -11,7 +11,7 @@
         </template>
 
         <v-list>
-          <v-list-item v-for="item in menu" :key="item.id" :value="item.id" @click="$emit('modal',$event,id)">
+          <v-list-item v-for="item in menu" :key="item.id" :value="item.id"  @click="$emit('modal', item.title, id)">
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
         </v-list>

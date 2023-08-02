@@ -1,20 +1,18 @@
 <template>
-    <ModalWindow>
-        <template v-slot:header>
-            <H1>Внесите изменения курса</H1>
-        </template>
+        <slot  name="header">
+            <h1>Внесите изменения курса</h1>
+        </slot>
 
-        <template v-slot:body>
-            <CourseCard :="course" />
+        <slot name="body">
+            <CourseCard :course="courses[courseId]" />
 
-        </template>
+        </slot>
 
-        <template v-slot:footer>
+        <slot name="footer">
             <v-btn>save</v-btn>
             <v-btn>discard</v-btn>
             <v-btn>cancel</v-btn>
-        </template>
-    </ModalWindow>
+        </slot>
 </template>
 
 
@@ -22,9 +20,20 @@
 <script setup lang='ts'>
 import type { Course } from '@/plugins/types/Course';
 import CourseCard from '../CourseCard.vue';
-import ModalWindow from './ModalWindow.vue';
+import  {inject , ref}  from 'vue'
 
-const course = defineProps<Course>()
+const courses : Array<Course> = inject('courses', [{
+    name: 'Error',
+    description: 'Error',
+    icon: "mdi-cloud-upload",
+    progress: 80,
+    deadline: 'Error',
+    budget: 'Error',
+    avatarLink: 'https://randomuser.me/api/portraits/men/85.jpg',
+    id: 0
+}])
+const courseId : number = inject('courseId',0)
+
 
 function editCourse() {
     //function changes course

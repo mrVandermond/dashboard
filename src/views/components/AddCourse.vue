@@ -1,18 +1,22 @@
-<template v-slot:header >
+<template>
+    <ModalWindowVue>
+        <template v-slot:header>
+
+        </template>
+
+        <template v-slot:body>
 
 
+        </template>
+
+        <template v-slot:footer>
+
+        </template>
+    </ModalWindowVue>
 </template>
-
-<template v-slot:body>
-
-
-</template>
-
-<template v-slot:footer>
-
-</template>
-
 <script setup lang='ts'>
+import type ModalWindowVue from './ModalWindow.vue';
+
 
 </script>
 
