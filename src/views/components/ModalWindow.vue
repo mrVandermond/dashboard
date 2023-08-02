@@ -6,19 +6,19 @@
                     <div class="modal-close" @click=" $emit(`close`)">&#10006;</div>
                     <component :is="component">
                         <template v-slot:header>
-                            <h3 class="modal-title"></h3>
+                            <!-- <h3 class="modal-title"></h3> -->
                         </template>
                         <template v-slot:body>
-                            <div class="modal-content">
+                            <!-- <div class="modal-content">
                                 тут будет дефолтный контент модального окна
-                            </div>
+                            </div> -->
                         </template>
                         <template v-slot:footer>
-                            <div class="modal-footer">
+                            <!-- <div class="modal-footer">
                                 <button class="modal-footer__button" @click="$emit(`close`)">
                                     кнопка
                                 </button>
-                            </div>
+                            </div> -->
                         </template>
                     </component>
                 </div>

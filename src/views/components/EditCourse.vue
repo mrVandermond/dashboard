@@ -4,7 +4,7 @@
         </slot>
 
         <slot name="body">
-            <CourseCard :course="courses[courseId]" />
+            <CourseCard :Course="courses[courseId]" />
 
         </slot>
 
